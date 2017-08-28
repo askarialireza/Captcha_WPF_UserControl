@@ -1,0 +1,69 @@
+﻿<UserControl 
+    
+    x:Class="Captcha.Captcha"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Captcha"
+    mc:Ignorable="d" 
+    Height="auto"
+    Width="auto"
+    VerticalAlignment="Stretch"
+    HorizontalAlignment="Stretch"
+    FontSize="48"
+    
+    >
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox IsEnabled="False" FontFamily="Chiller" FontWeight="Bold" Name="CaptchaText" Grid.ColumnSpan="2" Grid.Row="0" Text="ABCDef" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FF65778D" >
+
+            <TextBox.Background>
+                <ImageBrush ImageSource="Resources/CaptchaBack.png"/>
+            </TextBox.Background>
+
+            <TextBox.Style>
+                <Style  TargetType="{x:Type TextBox}" >
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Button Name="SpeechCaptchaButton" Grid.Row="1" Grid.Column="0" Margin="0,2,2,2" Width="auto"  HorizontalContentAlignment="Center" Click="SpeechCaptchaButton_Click" FontFamily="segoe ui" FontSize="13" FontWeight="Normal">
+            <StackPanel>
+                <Image Source="Resources/Speaker.png" Stretch="Uniform" Height="30"/>
+            </StackPanel>
+        </Button>
+
+        <Button Name="ResetCaptchaButton" Grid.Row="1" Grid.Column="1" Margin="2,2,0,2" Width="AUTO" HorizontalContentAlignment="Center" Click="ResetCaptchaButton_Click" FontFamily="segoe ui" FontSize="13" FontWeight="Normal">
+            <StackPanel>
+                <Image Source="Resources/Refresh.png" Stretch="Uniform" Height="30"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+
+
+</UserControl>
